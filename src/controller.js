@@ -115,7 +115,8 @@ export const chat = async (req, res) => {
                     Keep your answers clear, concise, and educational context: ${context} `
             },
         });
-        if (response.text !== "I could not find the answer in the provided document") {
+        const output = await response.text();
+        if (output !== "I could not find the answer in the provided document") {
             History.push({
                 role: 'model',
                 parts: [{ text: response.text }],
