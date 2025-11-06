@@ -5,7 +5,13 @@ import router from "./src/router.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
-
+app.use(
+  cors({
+    origin: ["https://project-management-frontend-w48y.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 const PORT = process.env.PORT || 3000;
 
 app.use("/api", router);
